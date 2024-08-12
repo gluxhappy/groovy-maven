@@ -29,9 +29,13 @@ static def copy(Path source, Path dest) throws IOException {
     }
 }
 
-Scanner scanner = new Scanner(System.in);
-System.out.print("Enter the name of the new module: ");
-String newModuleName = scanner.nextLine().trim();
+String newModuleName=System.getProperty("example")?.strip()
+
+if(!newModuleName) {
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("Enter the name of the new module: ");
+    newModuleName = scanner.nextLine().strip()
+}
 
 Path root;
 if (Files.exists(Path.of("template"))) {

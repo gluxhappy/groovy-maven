@@ -22,19 +22,28 @@
             <version>${groovy.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.gmaven</groupId>
+            <artifactId>groovy-maven-plugin</artifactId>
+            <version>2.1.1</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.13.1</version>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>groovy-maven-plugin</artifactId>
+                <version>2.1.1</version>
                 <executions>
                     <execution>
+                        <id>run</id>
                         <goals>
                             <goal>execute</goal>
                         </goals>
+                        <configuration>
+                            <source>template/src/main/groovy/Duplicate.groovy</source>
+                        </configuration>
                     </execution>
                 </executions>
                 <dependencies>
@@ -45,11 +54,6 @@
                         <scope>runtime</scope>
                     </dependency>
                 </dependencies>
-                <configuration>
-                    <scripts>
-                        <script>src/main/groovy/Duplicate.groovy</script>
-                    </scripts>
-                </configuration>
             </plugin>
         </plugins>
 
